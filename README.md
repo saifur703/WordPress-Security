@@ -356,3 +356,42 @@ RewriteCond %{HTTP_REFERER} "^https?://(?:[^/]+\.)?savetubevideo\.com" [NC]
 RewriteRule ^.* - [F,L]
 # End HackRepair.com Blacklist, http://pastebin.com/u/hackrepair
 ```
+
+### WordPress Extra important Security
+
+```
+1.
+Delete the first user you create when you're setting up your account.  
+Oftentimes people create a generic admin user, and that user is given the user number "1".  
+Pretty easy for a hacker to guess the user name and the user number, then it's just a matter of time and effort 
+to get your password.  
+From the wordpress admin, create a new user with admin priviledges, log out, and log in as the newly created user.  
+Then delete the default/admin user.
+```
+
+```
+2. 
+Change the default database table prefix, which is usually "wp_". 
+You're going to need database access to do this and 
+you can get the full explanation on how to do this safely,
+https://www.wpbeginner.com/wp-tutorials/how-to-change-the-wordpress-database-prefix-to-improve-security/
+```
+
+### Disable the wordpress version (functions.php)
+```
+add_filter('the_generator', '__return_false');
+```
+
+### Disallow HTML in wordpress comments
+```
+add_filter( 'pre_comment_content', 'esc_html' );
+```
+
+### Disable login hints in wordpress
+```
+function no_wordpress_errors(){
+ return 'Please try the right user/pass combination';
+}
+add_filter( 'login_errors', 'no_wordpress_errors' );
+```
+
