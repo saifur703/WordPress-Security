@@ -1,0 +1,19 @@
+/*css to disable text highlight will not be able to use ctrl + C  */
+
+body {
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none; 
+}
+/*CSS ends */
+
+
+
+/*css to remove image load option in mobile */
+
+img {
+	pointer-events: none;
+}
+
+/*CSS ends */
